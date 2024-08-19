@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Bot</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        html, body {
+            height: 100%; /* Ensure full height */
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
         }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: #36393f; /* Dark Discord color */
+            color: #dcddde; /* Light gray for text */
+        }
+
         header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 20px 20px;
+            background-color: #2f3136; /* Darker Discord color */
+            color: #dcddde; /* Light gray for text */
+            padding: 20px;
             text-align: center;
             position: fixed;
             width: 100%;
@@ -23,66 +29,200 @@
             left: 0;
             z-index: 1000;
         }
+
         header nav {
             display: flex;
             justify-content: center;
             gap: 20px;
-            padding: 10px;
+            padding: 10px 0;
         }
+
         header nav a {
-            color: #fff;
+            color: #dcddde; /* Light gray for links */
             text-decoration: none;
             font-size: 18px;
         }
+
         header nav a:hover {
             text-decoration: underline;
         }
+
         header h1 {
             margin: 0;
             padding: 0;
         }
+
         main {
-            padding: 80px 20px 20px; /* Adjust padding to account for fixed header */
+            flex: 1; /* Take up remaining space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            padding: 20px; /* Adjust padding */
+            position: relative; /* Position relative for absolute positioning */
         }
+
         .section {
-            margin-bottom: 20px;
+            display: none; /* Hide all sections by default */
+            margin-bottom: 40px; /* Increased margin for more space between sections */
+            text-align: center; /* Center text in the section */
         }
+
+        .visible {
+            display: block; /* Show the section */
+        }
+
         .button {
             display: inline-block;
             padding: 15px 30px; /* Bigger button */
-            color: #fff;
-            background-color: #007bff;
+            color: #dcddde; /* Light gray for button text */
+            background-color: #7289da; /* Discord blurple */
             text-decoration: none;
             border-radius: 5px;
             font-size: 18px; /* Larger font */
             text-align: center; /* Center text */
             margin: 10px 0; /* Spacing between buttons */
         }
+
         .button:hover {
-            background-color: #0056b3;
+            background-color: #5b6eae; /* Darker blurple */
         }
+
+        .small-button {
+            padding: 10px 20px; /* Smaller button */
+            font-size: 14px; /* Smaller font */
+        }
+
         footer {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            text-align: center;
+            background-color: #2f3136; /* Darker Discord color */
+            color: #dcddde; /* Light gray for text */
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center the footer content horizontally */
+            position: relative; /* Positioning context for the donate button */
         }
+
+        .footer-content {
+            display: flex;
+            justify-content: center; /* Center text horizontally */
+            align-items: center; /* Center text vertically */
+            position: relative;
+            width: 100%; /* Ensure full width */
+        }
+
+        .footer-text {
+            text-align: center; /* Center text */
+            flex: 1; /* Allow text to take available space */
+        }
+
+        .footer-donate {
+            position: absolute; /* Position the button absolutely */
+            right: 70px; /* Adjust the right padding as needed */
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-image {
+            position: absolute; /* Position the image absolutely */
+            right: 130px; /* Adjust the right padding as needed to place it between the button and the edge */
+            width: 50px; /* Adjust the size as needed */
+            height: 50px; /* Adjust the size as needed */
+        }
+
+        .main-image {
+            position: absolute; /* Position the image absolutely */
+            left: 100px; /* Adjust distance from the left edge */
+            top: 60%; /* Vertically center */
+            transform: translateY(-50%); /* Vertically center */
+            width: 450px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Remove numbers and add spacing to the ordered list */
+        section ol {
+            list-style-type: none; /* Remove the numbers */
+            padding: 0; /* Remove default padding */
+        }
+
+        section ol li {
+            margin-bottom: 10px; /* Add space between list items */
+            padding-left: 0; /* Remove any padding on the left */
+        }
+        /* Target only the Installation section */
+#install {
+    max-width: 800px; /* Set a maximum width for the content box */
+    margin: 0 auto; /* Center the section horizontally */
+    padding: 20px; /* Add padding inside the box */
+    text-align: left; /* Align text to the left */
+}
+
+#install h2 {
+    margin-top: 0; /* Remove top margin for h2 */
+}
+
+#install p {
+    margin-bottom: 10px; /* Add spacing between paragraphs */
+}
+
+#install ol {
+    list-style-type: none; /* Remove default numbering */
+    padding: 0; /* Remove default padding */
+}
+
+#install ol li {
+    margin-bottom: 10px; /* Add spacing between list items */
+}
+#install a {
+    color: #7289da; /* Change to your preferred color */
+    text-decoration: none; /* Remove underline */
+}
+
+#install a:hover {
+    color: #5b6eae; /* Darker shade for hover effect */
+    text-decoration: underline; /* Optional: underline on hover to indicate it's clickable */
+}
+
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Bot</h1>
+        <h1>Guild Agent</h1>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#faq">FAQ</a>
-            <a href="#donate" class="button">Donate</a>
+            <a href="#" id="home-btn">Home</a>
+            <a href="#" id="install-btn">Installation</a> <!-- New Installation button -->
+            <a href="#" id="faq-btn">FAQ</a>
         </nav>
     </header>
     <main>
-        <section id="home" class="section">
+        <img src="Guild Agent.png" alt="Image Description" class="main-image">
+        <section id="home" class="section visible">
             <h2>Welcome</h2>
-            <p>Welcome to the official page for My Bot. Learn more about its features and how to use it.</p>
+            <p>Welcome to the Guild Agent. Your Discord bot for managing Guild Advertisement channels!</p>
+            <a href="https://discord.com/oauth2/authorize?client_id=1271187225903759421" class="button centered-button" target="_blank">
+                Invite Bot
+            </a>
         </section>
+        <section id="install" class="section"> <!-- New Installation section -->
+            <h2>Installation</h2>
+            <b>Follow these steps to install and set up the Guild Agent bot:</b>
+            <ol>
+                <br>
+                <li><b>Use the <code>/setup</code> command to set up the 3 necessary channels.</b></li>
+                <br>
+                <li><b>Use the <code>/setuptimers</code> to set up the age a post must be before it's reposted, and how many days old a post should be before it's removed.</b></li>
+                <br>
+                <li><b>Use <code>/setupvalues</code> to add these values:</b></li>
+                <br>
+                <li><b>Google sheet ID</b> (it must be public!)</li>
+                <li>The <b>Column Range</b> of the sheet (i.e A1:T which is the standard in the provided Form and Sheet).</li>
+                <li>The <b>Timestamp</b> header name (for exclusion in the message posts), it's just "Timestamp" if you use the provided form and sheet.</li>
+                <li>The <b>Guild Logo</b> header name (for fetching the image without including URL in the message), it's just "Guild Logo" if you use the provided form and sheet.</li>
+                <br>
+                <br>
+            </ol>
+            <p>If you encounter any issues, please refer to our <a href="https://github.com/Nutrinoff/GuildRecruitmentBot/issues" target="_blank">troubleshooting guide</a> or contact support.</p>
+        </section>        
         <section id="faq" class="section">
             <h2>FAQ</h2>
             <p>Here you can include answers to frequently asked questions about your bot.</p>
@@ -90,16 +230,42 @@
         <section id="donate" class="section">
             <h2>Support Us</h2>
             <p>If you’d like to support our project, you can make a donation:</p>
-            <a href="https://your-donation-link.com" class="button" target="_blank">Donate</a>
-        </section>
-        <section class="section">
-            <h2>Invite the Bot</h2>
-            <p>Invite our bot to your server:</p>
-            <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&scope=bot&permissions=YOUR_PERMISSIONS" class="button" target="_blank">Invite Bot</a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=AZ5DRHTTXHG3Q" class="button centered-button" target="_blank">Donate</a>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 My Bot</p>
+        <div class="footer-content">
+            <div class="footer-text">
+                <p>&copy; 2024 Guild Agent | Created by Nutrinoff. All rights reserved.</p>
+            </div>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=AZ5DRHTTXHG3Q" class="button small-button footer-donate" target="_blank">Donate</a>
+        </div>
     </footer>
+    <script>
+        // JavaScript to handle the section visibility
+        document.getElementById('home-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+            showSection('home');
+        });
+
+        document.getElementById('install-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+            showSection('install');
+        });
+
+        document.getElementById('faq-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+            showSection('faq');
+        });
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('visible');
+            });
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('visible');
+        }
+    </script>
 </body>
 </html>
