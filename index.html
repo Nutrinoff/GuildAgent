@@ -12,14 +12,33 @@
             background-color: #f4f4f4;
             color: #333;
         }
-        header, footer {
+        header {
             background-color: #007bff;
             color: #fff;
             padding: 10px 20px;
             text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        header nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        header a:hover {
+            text-decoration: underline;
         }
         main {
-            padding: 20px;
+            padding: 80px 20px 20px; /* Adjust padding to account for fixed header */
         }
         .section {
             margin-bottom: 20px;
@@ -36,14 +55,28 @@
         .button:hover {
             background-color: #0056b3;
         }
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#faq">FAQ</a>
+        </nav>
         <h1>Welcome to My Bot</h1>
     </header>
     <main>
-        <section class="section">
+        <section id="home" class="section">
+            <h2>Welcome</h2>
+            <p>Welcome to the official page for My Bot. Learn more about its features and how to use it.</p>
+        </section>
+        <section id="faq" class="section">
             <h2>FAQ</h2>
             <p>Here you can include answers to frequently asked questions about your bot.</p>
         </section>
