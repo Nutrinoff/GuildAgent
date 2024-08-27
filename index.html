@@ -137,7 +137,7 @@
             left: 100px;
             top: 60%;
             transform: translateY(-50%);
-            width: 450px;
+            width: 400px;
             height: auto;
         }
 
@@ -154,7 +154,7 @@
         #install {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px;
             text-align: left;
         }
 
@@ -172,7 +172,7 @@
         }
 
         #install ol li {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         #install a {
@@ -207,18 +207,63 @@
         </section>
         <section id="install" class="section">
             <h2>Installation</h2>
-            <b>Follow these steps to install and set up the Guild Agent bot:</b>
             <ol>
-                <li><b>Use the <code>/setup</code> command to set up the 3 necessary channels.</b></li>
-                <li><b>Use the <code>/setuptimers</code> to set up the age a post must be before it's reposted, and how many days old a post should be before it's removed.</b></li>
-                <li><b>Use <code>/setupvalues</code> to add these values:</b></li>
-                <li><b>Google sheet ID</b> (it must be public!)</li>
-                <li>The <b>Column Range</b> of the sheet (i.e A1:T which is the standard in the provided Form and Sheet).</li>
-                <li>The <b>Timestamp</b> header name (for exclusion in the message posts), it's just "Timestamp" if you use the provided form and sheet.</li>
-                <li>The <b>Guild Logo</b> header name (for fetching the image without including URL in the message), it's just "Guild Logo" if you use the provided form and sheet.</li>
+                <li>
+                    <br>
+                    <b>Download and Copy the Google Form:</b>
+                    <ol>
+                        <br>
+                        <li>Make a copy of the Google Form provided <a href="https://drive.google.com/drive/folders/1iCHNDVrEyCj3PEYExm3G-igmT4V_jwxA?usp=sharing" target="_blank">here</a>.</li>
+                        <li>The form will be copied to your Google Drive, where you can rename it if needed.</li>
+                    </ol>
+                    <br>
+                    <b>Create and Set Up a Google Sheet:</b>
+                    <ol>
+                        <br>
+                            <ul>
+                                <li>Return to your Google Form.</li>
+                                <li>Click on <b>Responses</b> in the Form editor.</li>
+                                <li>Click the green <b>Create Spreadsheet</b> button.</li>
+                                <li>Choose to <b>Create a new spreadsheet</b></li>
+                                <li>
+                                    Get the link to your new spreadsheet and copy the ID from the link. 
+                                    <code><b>https://docs.google.com/spreadsheets/d/SHEET_ID_HERE/edit</b></code>
+                                </li>
+                                <br>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <b>Use Discord Bot Commands:</b>
+                    <ol>
+                        <br>
+                        <li><code><b>/setup</b></code></li>
+                        <li>
+                            Use set up the three necessary channels.
+                        </li>
+                        <ul>
+                            <li><b>Alliance Channel:</b>  The channel you want your Alliance guild advertisements</li>
+                            <li><b>Horde Channel:</b> The channel you want your Horde guild advertisements</li>
+                            <li><b>Mod Channel:</b> The channel you want the bot to throw warnings, aka warning you of duplicate entries etc.</li>
+                        </ul>
+                        <br>
+                        <li><code><b>/setuptimers</b></code></li>
+                        <li>
+                            Use the  command to set up the age limits for posts.
+                            Specify how many days a post must be before it’s reposted and how many days old a post should be before it’s removed.
+                        </li>
+                        <br>
+                        <li><code><b>/setupsheet</b></code></li>
+                        <li>
+                            Use to configure the Google Sheet. Add your sheet ID here.
+                        </li>
+                    </ol>
+                </li>
             </ol>
             <p>If you encounter any issues, please refer to our <a href="https://github.com/Nutrinoff/GuildRecruitmentBot/issues" target="_blank">troubleshooting guide</a> or contact support.</p>
         </section>
+        
         <section id="faq" class="section">
             <h2>FAQ</h2>
             <p>Here you can include answers to frequently asked questions about your bot.</p>
